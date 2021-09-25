@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C9AD13826FD866A003F4016 /* TaskCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AD13726FD866A003F4016 /* TaskCreator.swift */; };
+		7C9AD13926FD866A003F4016 /* TaskCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AD13726FD866A003F4016 /* TaskCreator.swift */; };
 		7CF919BB26FBD2EF0050115C /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF919BA26FBD2EF0050115C /* Tests_iOS.swift */; };
 		7CF919BD26FBD2EF0050115C /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF919BC26FBD2EF0050115C /* Tests_iOSLaunchTests.swift */; };
 		7CF919C726FBD2EF0050115C /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF919C626FBD2EF0050115C /* Tests_macOS.swift */; };
@@ -41,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C9AD13726FD866A003F4016 /* TaskCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreator.swift; sourceTree = "<group>"; };
 		7CF919A026FBD2ED0050115C /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		7CF919A126FBD2ED0050115C /* SchedulelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulelyApp.swift; sourceTree = "<group>"; };
 		7CF919A226FBD2ED0050115C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		7CF9199E26FBD2ED0050115C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C9AD13726FD866A003F4016 /* TaskCreator.swift */,
 				7CF919A126FBD2ED0050115C /* SchedulelyApp.swift */,
 				7CF919A226FBD2ED0050115C /* ContentView.swift */,
 				7CF919A326FBD2ED0050115C /* Persistence.swift */,
@@ -311,6 +315,7 @@
 				7CF919D026FBD2EF0050115C /* Persistence.swift in Sources */,
 				7CF919CC26FBD2EF0050115C /* SchedulelyApp.swift in Sources */,
 				7CF919CE26FBD2EF0050115C /* ContentView.swift in Sources */,
+				7C9AD13826FD866A003F4016 /* TaskCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +327,7 @@
 				7CF919D126FBD2EF0050115C /* Persistence.swift in Sources */,
 				7CF919CD26FBD2EF0050115C /* SchedulelyApp.swift in Sources */,
 				7CF919CF26FBD2EF0050115C /* ContentView.swift in Sources */,
+				7C9AD13926FD866A003F4016 /* TaskCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

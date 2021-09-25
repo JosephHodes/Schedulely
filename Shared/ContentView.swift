@@ -12,20 +12,28 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+        sortDescriptors: [NSSortDescriptor(keyPath: \TaskList.title, ascending: true)],
+        animation: .none)
+    private var items: FetchedResults<TaskList>
+    @State private var title:String = "hii";
+    
     var body: some View {
         NavigationView {
+            VStack{
             List {
                 ForEach(items) { item in
-                    NavigationLink(destination: Text("Item at \(item.timestamp!, formatter: itemFormatter)")) {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                    NavigationLink(destination: Text("Item at \(item.title!)")) {
+                        Text(item.title!)
+                        
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete(perform: deleteItems) 
             }
+            NavigationLink(destination: TaskCreator()) {
+                Text("Add Task")
+            }
+            }
+            .navigationTitle("Scheduley")
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -33,19 +41,19 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                   
                 }
             }
             Text("Select an item")
+            
         }
+        
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = TaskList(context: viewContext)
+            newItem.title = title
 
             do {
                 try viewContext.save()
