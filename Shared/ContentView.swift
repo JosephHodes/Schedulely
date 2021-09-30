@@ -10,28 +10,31 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \TaskList.title, ascending: true)],
         animation: .none)
     private var items: FetchedResults<TaskList>
-    @State private var title:String = "hii";
+    @State private var title:String = "hii"
+    @State private var isCreatingTask:Bool = false
     
     var body: some View {
         NavigationView {
             VStack{
-            List {
-                ForEach(items) { item in
-                    NavigationLink(destination: Text("Item at \(item.title!)")) {
-                        Text(item.title!)
-                        
+                List {
+                    ForEach(items) { item in
+                        NavigationLink(destination: Text("Item at \(item.title!)")) {
+                            Text(item.title!)
+                            
+                        }
                     }
+                    .onDelete(perform: deleteItems)
                 }
-                .onDelete(perform: deleteItems) 
-            }
-            NavigationLink(destination: TaskCreator()) {
-                Text("Add Task")
-            }
+                Button("add Task") {
+                    isCreatingTask.toggle()
+                }.popover(isPresented: $isCreatingTask){
+                    NewTaskView()
+                }
             }
             .navigationTitle("Scheduley")
             .toolbar {
@@ -41,7 +44,7 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                   
+                    
                 }
             }
             Text("Select an item")
@@ -49,12 +52,12 @@ struct ContentView: View {
         }
         
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = TaskList(context: viewContext)
             newItem.title = title
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -65,11 +68,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
